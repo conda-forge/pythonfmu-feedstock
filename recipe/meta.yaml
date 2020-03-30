@@ -13,7 +13,7 @@ build:
   number: 0
   skip: true  # [py<36 or osx]
   entry_points:
-    - pythonfmu-builder = pythonfmu.builder:main
+    - pythonfmu = pythonfmu.__main__:cli_main
 
 requirements:
   build:
