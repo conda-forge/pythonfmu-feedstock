@@ -10,7 +10,7 @@ source:
   sha256: 0e6bbc5d28ba6fc52714dbabc3bfa73d3c2941e6757c5f5a186d352263806725
 
 build:
-  number: 0
+  number: 1
   skip: true  # [py<36 or osx]
   entry_points:
     - pythonfmu = pythonfmu.__main__:cli_main
