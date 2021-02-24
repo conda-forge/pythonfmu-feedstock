@@ -1,5 +1,5 @@
 {% set name = "pythonfmu" %}
-{% set version = "0.6.1" %}
+{% set version = "0.6.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e61120711f4094a2dfbd3857875b3ff9ca1d95716bf5a3e4429186e17af43d53
+  sha256: 4563a4525aa5b6893ee35a3d369810ea331ba014209d7ec9f60be90eb04fbc93
 
 build:
   number: 0
