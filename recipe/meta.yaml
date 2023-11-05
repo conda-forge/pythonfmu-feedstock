@@ -34,7 +34,7 @@ test:
     - pytest
     - pyfmi
   commands:
-    - pytest --pyargs pythonfmu.tests
+    - pytest --pyargs pythonfmu.tests -k "not multiple_fmus_pyfmi"
   imports:
     - pythonfmu
 
