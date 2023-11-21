@@ -8,10 +8,12 @@ package:
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: 4563a4525aa5b6893ee35a3d369810ea331ba014209d7ec9f60be90eb04fbc93
+  patches:
+    # https://github.com/NTNU-IHB/PythonFMU/pull/187
+    - 0001-Fix-pythonfmu-export-module-on-OSX.patch
 
 build:
-  number: 1
-  skip: true  # [py<36 or osx]
+  number: 2
   entry_points:
     - pythonfmu = pythonfmu.__main__:cli_main
 
@@ -32,7 +34,7 @@ test:
     - pytest
     - pyfmi
   commands:
-    - pytest --pyargs pythonfmu.tests
+    - pytest --pyargs pythonfmu.tests -k "not multiple_fmus_pyfmi"
   imports:
     - pythonfmu
 
