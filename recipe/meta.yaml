@@ -1,5 +1,5 @@
 {% set name = "pythonfmu" %}
-{% set version = "0.6.2" %}
+{% set version = "0.6.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 4563a4525aa5b6893ee35a3d369810ea331ba014209d7ec9f60be90eb04fbc93
-  patches:
-    # https://github.com/NTNU-IHB/PythonFMU/pull/187
-    - 0001-Fix-pythonfmu-export-module-on-OSX.patch
+  sha256: be93463ed61eee679ad273cb031f3b6087cc4ddc096300526f0b7b85716c1ca6
 
 build:
-  number: 2
+  number: 0
   entry_points:
     - pythonfmu = pythonfmu.__main__:cli_main
 
