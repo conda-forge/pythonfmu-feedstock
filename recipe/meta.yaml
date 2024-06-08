@@ -10,13 +10,14 @@ source:
   sha256: be93463ed61eee679ad273cb031f3b6087cc4ddc096300526f0b7b85716c1ca6
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - pythonfmu = pythonfmu.__main__:cli_main
 
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
     - make  # [unix]
