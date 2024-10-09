@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  skip: true # [osx]
+  skip: true  # [osx]
   entry_points:
     - pythonfmu = pythonfmu.__main__:cli_main
 
