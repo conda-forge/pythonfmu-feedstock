@@ -1,17 +1,19 @@
-{% set name = "pythonfmu" %}
-{% set version = "0.6.9" %}
+{% set version = "0.7.0" %}
 
 package:
-  name: {{ name|lower }}
+  name: pythonfmu
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 13eab981d3c86704ab19b35ebcee9347b2dcc378bbe8d0b43c9ae1fe35bc9fa7
+  url: https://github.com/NTNU-IHB/PythonFMU/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: caafdfcbd08e57e5d913b94e5be87f9727f82825bebf6cec495f6efedba97ebf
+  patches:
+    - clang.patch
 
 build:
-  number: 1
-  skip: true  # [osx]
+  number: 0
+  python_version_independent: true  # [is_abi3]
+  skip: true  # [is_abi3 and not is_python_min]
   entry_points:
     - pythonfmu = pythonfmu.__main__:cli_main
 
@@ -24,6 +26,7 @@ requirements:
     - make  # [unix]
   host:
     - python
+    - python-abi3  # [is_abi3]
     - pip
     - setuptools
   run:
@@ -50,3 +53,4 @@ extra:
   recipe-maintainers:
     - fcollonval
     - markaren
+    - jschueller

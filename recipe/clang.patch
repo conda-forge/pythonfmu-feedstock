@@ -1,0 +1,13 @@
+diff --git a/src/pythonfmu/PySlaveInstance.cpp b/src/pythonfmu/PySlaveInstance.cpp
+index f05c866..4b5262a 100644
+--- a/src/pythonfmu/PySlaveInstance.cpp
++++ b/src/pythonfmu/PySlaveInstance.cpp
+@@ -718,7 +718,7 @@ BOOL APIENTRY DllMain(HMODULE hModule,
+     }
+     return TRUE;
+ }
+-#elif defined(__linux__)
++#elif defined(__GNUC__) || defined(__clang__)
+ __attribute__((destructor)) void onLibraryUnload()
+ {
+     finalizePythonInterpreter();
