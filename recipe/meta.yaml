@@ -11,7 +11,7 @@ source:
     - clang.patch
 
 build:
-  number: 0
+  number: 1
   python_version_independent: true  # [is_abi3]
   skip: true  # [is_abi3 and not is_python_min]
   entry_points:
@@ -23,7 +23,7 @@ requirements:
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
     - cmake
-    - make  # [unix]
+    - ninja
   host:
     - python
     - python-abi3  # [is_abi3]
