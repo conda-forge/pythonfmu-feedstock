@@ -1,0 +1,59 @@
+context:
+  version: "0.7.0"
+
+package:
+  name: pythonfmu
+  version: ${{ version }}
+
+source:
+  url: https://github.com/NTNU-IHB/PythonFMU/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: caafdfcbd08e57e5d913b94e5be87f9727f82825bebf6cec495f6efedba97ebf
+  patches:
+    - clang.patch
+
+build:
+  number: 2
+  python:
+    version_independent: true
+    entry_points:
+      - pythonfmu = pythonfmu.__main__:cli_main
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - cmake
+    - ninja
+  host:
+    - python-abi3 ${{ python_min }}.*
+    - python ${{ python_min }}.*
+    - pip
+    - setuptools
+  run:
+    - python >=${{ python_min }}
+
+tests:
+  - python:
+      imports:
+        - pythonfmu
+  - script:
+      - pytest --pyargs pythonfmu.tests -k "not multiple_fmus_pyfmi"
+    requirements:
+      run:
+        - pytest
+        - pyfmi
+
+about:
+  homepage: https://github.com/NTNU-IHB/PythonFMU
+  summary: A lightweight framework that enables the packaging of Python3.x code as co-simulation FMUs.
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  repository: https://github.com/NTNU-IHB/PythonFMU
+
+extra:
+  recipe-maintainers:
+    - fcollonval
+    - markaren
+    - jschueller
